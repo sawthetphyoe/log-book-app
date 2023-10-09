@@ -79,10 +79,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#cfccff"
             android:padding="16dp"
             android:text="@string/minus"
-            android:textColor="@color/white"
+            android:textColor="#150e7c"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -144,10 +144,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#cfccff"
             android:padding="16dp"
             android:text="@string/multiply"
-            android:textColor="@color/white"
+            android:textColor="#150e7c"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -173,10 +173,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#7066ff"
             android:padding="16dp"
             android:text="@string/clear"
-            android:textColor="@color/white"
+            android:textColor="#ffffff"
             android:textSize="24sp" />
 
         <Button
@@ -197,10 +197,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#cfccff"
             android:padding="16dp"
             android:text="@string/equal"
-            android:textColor="@color/white"
+            android:textColor="#150e7c"
             android:textSize="24sp" />
 
         <Button
@@ -209,10 +209,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#cfccff"
             android:padding="16dp"
             android:text="@string/plus"
-            android:textColor="@color/white"
+            android:textColor="#150e7c"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -274,10 +274,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:backgroundTint="#cfccff"
             android:padding="16dp"
             android:text="@string/divide"
-            android:textColor="@color/white"
+            android:textColor="#150e7c"
             android:textSize="24sp" />
     </LinearLayout>
 
