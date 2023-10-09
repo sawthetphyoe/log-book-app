@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculatorActivity extends AppCompatActivity {
     enum operation {
@@ -60,6 +61,8 @@ public class CalculatorActivity extends AppCompatActivity {
         btnMultiply.setOnClickListener(v -> onOperatorClick(operation.MULTIPLY));
         btnDivide.setOnClickListener(v -> onOperatorClick(operation.DIVIDE));
 
+        btnClear.setOnClickListener(v -> resetCalculator());
+
         btnEqual.setOnClickListener(v -> {
             if (operator != null) {
                 operandTwo = Double.parseDouble(calculatorDisplay.getText().toString());
@@ -72,9 +75,9 @@ public class CalculatorActivity extends AppCompatActivity {
             } else {
                 resetCalculator();
             }
+            activeNumber = false;
         });
 
-        btnClear.setOnClickListener(v -> resetCalculator());
     }
 
     private void resetCalculator() {
@@ -115,7 +118,12 @@ public class CalculatorActivity extends AppCompatActivity {
             return operand1 * operand2;
         }
         if (operator == operation.DIVIDE) {
-            return operand1 / operand2;
+            if (operand2 == 0) {
+                Toast.makeText(CalculatorActivity.this, "Can't divide by zero", Toast.LENGTH_LONG).show();
+                return 0;
+            } else {
+                return operand1 / operand2;
+            }
         }
         return 0;
     }
