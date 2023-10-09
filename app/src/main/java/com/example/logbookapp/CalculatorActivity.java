@@ -18,6 +18,7 @@ public class CalculatorActivity extends AppCompatActivity {
     Button btnPlus, btnMinus, btnDivide, btnMultiply, btnClear, btnEqual, btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine;
     double operandOne = 0, operandTwo = 0;
     operation operator;
+    boolean activeNumber = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,24 +81,27 @@ public class CalculatorActivity extends AppCompatActivity {
         operandOne = 0;
         operandTwo = 0;
         calculatorDisplay.setText("0");
+        operator = null;
     }
 
     private void onNumberClick(String text) {
         String currentDisplay = calculatorDisplay.getText().toString();
-        if (currentDisplay.equals("0") || operator != null) {
+        if (!activeNumber || currentDisplay.equals("0")) {
             calculatorDisplay.setText(text);
         } else {
             calculatorDisplay.append(text);
         }
+        activeNumber = true;
     }
 
     private void onOperatorClick(operation opt) {
-        if (operator != null && operandOne != 0) {
+        if (operator != null && activeNumber) {
             operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
         } else {
             operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
         }
         operator = opt;
+        activeNumber = false;
     }
 
     private double calculate(double operand1, double operand2, Enum<operation> operator) {
