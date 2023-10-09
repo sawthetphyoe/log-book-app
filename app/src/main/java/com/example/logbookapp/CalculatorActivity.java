@@ -3,12 +3,10 @@ package com.example.logbookapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class CalculatorActivity extends AppCompatActivity {
-
     enum operation {
         ADD,
         SUBTRACT,
@@ -45,89 +43,21 @@ public class CalculatorActivity extends AppCompatActivity {
         btnClear = findViewById(R.id.btn_clear);
         btnEqual = findViewById(R.id.btn_equal);
 
-        btnZero.setOnClickListener(v -> {
-            calculatorDisplay.setText("0");
-        });
+        btnZero.setOnClickListener(v -> onNumberClick("0"));
+        btnOne.setOnClickListener(v -> onNumberClick("1"));
+        btnTwo.setOnClickListener(v -> onNumberClick("2"));
+        btnThree.setOnClickListener(v -> onNumberClick("3"));
+        btnFour.setOnClickListener(v -> onNumberClick("4"));
+        btnFive.setOnClickListener(v -> onNumberClick("5"));
+        btnSix.setOnClickListener(v -> onNumberClick("6"));
+        btnSeven.setOnClickListener(v -> onNumberClick("7"));
+        btnEight.setOnClickListener(v -> onNumberClick("8"));
+        btnNine.setOnClickListener(v -> onNumberClick("9"));
 
-        btnOne.setOnClickListener(v -> {
-            calculatorDisplay.setText("1");
-        });
-
-        btnTwo.setOnClickListener(v -> {
-            calculatorDisplay.setText("2");
-        });
-
-        btnThree.setOnClickListener(v -> {
-            calculatorDisplay.setText("3");
-        });
-
-        btnFour.setOnClickListener(v -> {
-            calculatorDisplay.setText("4");
-        });
-
-        btnFive.setOnClickListener(v -> {
-            calculatorDisplay.setText("5");
-        });
-
-        btnSix.setOnClickListener(v -> {
-            calculatorDisplay.setText("6");
-        });
-
-        btnSeven.setOnClickListener(v -> {
-            calculatorDisplay.setText("7");
-        });
-
-        btnEight.setOnClickListener(v -> {
-            calculatorDisplay.setText("8");
-        });
-
-        btnNine.setOnClickListener(v -> {
-            calculatorDisplay.setText("9");
-        });
-
-        btnThree.setOnClickListener(v -> {
-            calculatorDisplay.setText("3");
-        });
-
-        btnPlus.setOnClickListener(v -> {
-            if (operator != null && operandOne != 0) {
-                operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
-            } else {
-                operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
-            }
-            ;
-            operator = operation.ADD;
-        });
-
-        btnMinus.setOnClickListener(v -> {
-            if (operator != null && operandOne != 0) {
-                operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
-            } else {
-                operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
-            }
-            ;
-            operator = operation.SUBTRACT;
-        });
-
-        btnMultiply.setOnClickListener(v -> {
-            if (operator != null && operandOne != 0) {
-                operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
-            } else {
-                operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
-            }
-            ;
-            operator = operation.MULTIPLY;
-        });
-
-        btnDivide.setOnClickListener(v -> {
-            if (operator != null && operandOne != 0) {
-                operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
-            } else {
-                operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
-            }
-            ;
-            operator = operation.DIVIDE;
-        });
+        btnPlus.setOnClickListener(v -> onOperatorClick(operation.ADD));
+        btnMinus.setOnClickListener(v -> onOperatorClick(operation.SUBTRACT));
+        btnMultiply.setOnClickListener(v -> onOperatorClick(operation.MULTIPLY));
+        btnDivide.setOnClickListener(v -> onOperatorClick(operation.DIVIDE));
 
         btnEqual.setOnClickListener(v -> {
             if (operator != null) {
@@ -139,46 +69,60 @@ public class CalculatorActivity extends AppCompatActivity {
                 operandTwo = 0;
                 operator = null;
             } else {
-                operandOne = 0;
-                operandTwo = 0;
-                calculatorDisplay.setText("0");
+                resetCalculator();
             }
-            ;
         });
 
-        btnClear.setOnClickListener(v -> {
-            operandOne = 0;
-            operandTwo = 0;
-            calculatorDisplay.setText("0");
-        });
+        btnClear.setOnClickListener(v -> resetCalculator());
     }
 
-    protected double calculate(double operand1, double operand2, Enum<operation> operator) {
+    private void resetCalculator() {
+        operandOne = 0;
+        operandTwo = 0;
+        calculatorDisplay.setText("0");
+    }
+
+    private void onNumberClick(String text) {
+        String currentDisplay = calculatorDisplay.getText().toString();
+        if (currentDisplay.equals("0") || operator != null) {
+            calculatorDisplay.setText(text);
+        } else {
+            calculatorDisplay.append(text);
+        }
+    }
+
+    private void onOperatorClick(operation opt) {
+        if (operator != null && operandOne != 0) {
+            operandOne = calculate(operandOne, Double.parseDouble(calculatorDisplay.getText().toString()), operator);
+        } else {
+            operandOne = Double.parseDouble(calculatorDisplay.getText().toString());
+        }
+        operator = opt;
+    }
+
+    private double calculate(double operand1, double operand2, Enum<operation> operator) {
         if (operator == operation.ADD) {
             return operand1 + operand2;
         }
-        ;
         if (operator == operation.SUBTRACT) {
             return operand1 - operand2;
         }
-        ;
         if (operator == operation.MULTIPLY) {
             return operand1 * operand2;
         }
-        ;
         if (operator == operation.DIVIDE) {
             return operand1 / operand2;
         }
-        ;
         return 0;
     }
 
-    ;
-
-    public static String fmt(double d) {
+    private static String fmt(double d) {
+        String s;
         if (d == (long) d) {
-            return String.format("%d", (long) d);
-        } else
-            return String.format("%s", d);
+            s = Long.toString((long) d);
+        } else {
+            s = Double.toString(d);
+        }
+        return s;
     }
 }
