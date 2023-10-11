@@ -20,4 +20,7 @@
     <string name="divide">/</string>
     <string name="clear">C</string>
     <string name="equal">=</string>
+    <string name="image_slider_view">Image Slider View</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
 </resources>
