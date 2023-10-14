@@ -12,7 +12,14 @@ public class ImageSliderActivity extends AppCompatActivity {
 
     Button btnNext, btnPrevious;
 
-    int[] images = {R.drawable.group, R.drawable.ic_launcher_background, android.R.drawable.btn_star_big_on, R.drawable.ic_launcher_foreground, android.R.drawable.checkbox_off_background, android.R.drawable.btn_radio};
+    int[] images = {
+            R.drawable.group,
+            R.drawable.ic_launcher_background,
+            android.R.drawable.btn_star_big_on,
+            R.drawable.ic_launcher_foreground,
+            android.R.drawable.checkbox_off_background,
+            android.R.drawable.btn_radio
+    };
     int index = 0;
 
     @Override

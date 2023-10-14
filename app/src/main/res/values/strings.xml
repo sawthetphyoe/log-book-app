@@ -23,4 +23,13 @@
     <string name="image_slider_view">Image Slider View</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+    <string name="add_new">+ Add New</string>
+    <string name="all_contacts">All Contacts</string>
+    <string name="add_new_button">Add New Button</string>
+    <string name="add_new_contact">Add New Contact</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="choose_date_of_birth">Choose Date of Birth</string>
+    <string name="save">SAVE</string>
+    <string name="contact_profile">Contact Profile</string>
 </resources>
